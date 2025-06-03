@@ -20,6 +20,9 @@ with mp_hands.Hands(static_image_mode=False, max_num_hands=1, min_detection_conf
     click_time = 0
     while cap.isOpened():
         ret, frame = cap.read()
+        if not ret:
+            print("Failed to capture frame")
+            break
 
         # Convert the image from BGR to RGB
         image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
